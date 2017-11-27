@@ -53,3 +53,12 @@ On the near/mid future, you can expect the following features:
 * Dockerfile to support Docker image deployments.
 * Single user authentication using _JWT_ and _OAuth_ together with 
 _passport_.
+
+### Running the project
+
+The following scripts are provided by default:
+* _npm run build_: build the _Angular_ application, leaving it on the 
+folder which will be published as static content by _Express_.
+* _npm run devStart_: start _nodemon_ process in order to enable 
+_hot reloading_ while implementing new features.
+* _npm start_: start the backend application on production mode.

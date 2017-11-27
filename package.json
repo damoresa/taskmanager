@@ -4,7 +4,8 @@
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
     "build": "cd ng2 && npm run build:production:aot",
-    "start": "nodemon application.js"
+    "devStart": "nodemon application.js",
+    "start": "node application.js"
   },
   "author": "Daniel Amores (damoresac@gmail.com)",
   "devDependencies": {
