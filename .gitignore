@@ -1,0 +1,13 @@
+# IDE
+.idea
+*.iml
+
+# Angular
+ng2/node_modules
+ng2/coverage
+ng2-base
+
+# NodeJS
+node_modules
+public
+*.log*

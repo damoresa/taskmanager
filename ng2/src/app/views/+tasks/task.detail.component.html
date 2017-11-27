@@ -1,0 +1,95 @@
+<div class="row m-0 p-3">
+	<div class="container">
+		<div id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="card">
+				<div class="card-header" role="tab" id="taskDetailHeading">
+					<h5 class="mb-0">
+						<a data-toggle="collapse" aria-expanded="true" aria-controls="taskDetail">
+							Task detail
+						</a>
+					</h5>
+				</div>
+
+				<div id="taskDetail" class="collapse show" role="tabpanel" aria-labelledby="taskDetailHeading">
+					<div class="card-block">
+						<div class="p-4">
+							<div class="form-group row">
+								<label for="code" class="form-control-label col-md-3">Code:</label>
+								<div class="col-md-6">
+									<p id="code" class="form-control-static m-0 p-0">{{ task.code }}</p>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="name" class="form-control-label col-md-3">Name:</label>
+								<div class="col-md-6">
+									<p id="name" class="form-control-static m-0 p-0">{{ task.name }}</p>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="description" class="form-control-label col-md-3">Description:</label>
+								<div class="col-md-6">
+									<p id="description" class="form-control-static m-0 p-0">{{ task.description }}</p>
+								</div>
+							</div>
+							<!-- TODO: To be implemented
+                            <div class="form-group row">
+                                <label for="startDate" class="form-control-label col-md-3">Start date:</label>
+                                <div class="col-md-6">
+                                    <p id="startDate" class="form-control-static m-0 p-0">11/09/2017</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="endDate" class="form-control-label col-md-3">End date:</label>
+                                <div class="col-md-6">
+                                    <p id="endDate" class="form-control-static m-0 p-0">18/09/2017</p>
+                                </div>
+                            </div>
+                            -->
+							<div class="form-group row">
+								<label for="status" class="form-control-label col-md-3">Status:</label>
+								<div class="col-md-6">
+									<p *ngIf="task.open" id="status" class="form-control-static m-0 p-0">Open</p>
+									<p *ngIf="!task.open" id="status" class="form-control-static m-0 p-0">Closed</p>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="duration" class="form-control-label col-md-3">Duration:</label>
+								<div class="col-md-6">
+									<p id="duration" class="form-control-static m-0 p-0">{{ durationDisplay }}</p>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="progression" class="form-control-label col-md-3">Progression:</label>
+								<div class="col-md-6">
+									<p id="progression" class="form-control-static m-0 p-0">{{ progressDisplay }}</p>
+									<div class="progress">
+										<div class="progress-bar" [style.width.%]="progressPercentage" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								</div>
+							</div>
+							<div *ngIf="task.linkedTasks && task.linkedTasks.length > 0" class="form-group row">
+								<label class="form-control-label col-md-3">Linked tasks:</label>
+								<div class="col-md-6">
+									<span *ngFor="let taskCode of task.linkedTasks" class="badge badge-primary clickable m-1"
+										  [routerLink]="['/tasks', taskCode]">{{ taskCode }}</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<button *ngIf="task.open" type="button" class="btn btn-primary" (click)="closeTask()">
+									<i class="fa fa-times fa-1x" aria-hidden="true"></i>&nbsp;Close
+								</button>
+							</div>
+							<div class="col-md-6 text-right">
+								<button type="button" class="btn btn-secondary" [routerLink]="['/tasks']">
+									<i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>&nbsp;Back
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

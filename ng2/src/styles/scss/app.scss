@@ -1,0 +1,77 @@
+// Font Awesome support
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
+// Colors
+@import 'colors';
+
+html, body {
+	height: 100%;
+}
+
+.content-wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by its height */
+	margin: 0 auto -8.5rem;
+	/* Pad bottom by footer height */
+	padding: 0 0 8.5rem;
+}
+
+.header {
+	background-image: url('./../../images/tasks.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 25rem;
+	.title {
+		background-color: $title-bg-color;
+		min-height: 10rem;
+	}
+}
+
+.content {
+	min-height: 20rem;
+	.text-card {
+		.text-card-icon {
+			min-height: 4rem;
+		}
+		.text-card-title {
+			min-height: 3rem;
+		}
+		.text-card-body {
+			min-height: 5rem;
+		}
+	}
+}
+
+.grid-action {
+	cursor: pointer;
+	.grid-action-icon {
+		margin-right: 0.5rem;
+	}
+}
+
+.footer {
+	background-color: $grey-background;
+	height: 8.5rem;
+	.footer-content {
+		border-top-style: solid;
+		border-top-width: 0.01rem;
+		border-top-color: gray;
+		ul {
+			list-style: none;
+		}
+		.action {
+			cursor: pointer;
+			margin-left: 0.7rem;
+			.action-icon {
+				margin-right: 0.5rem;
+			}
+		}
+	}
+}
+
+.clickable {
+	cursor: pointer;
+}

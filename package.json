@@ -1,0 +1,20 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "Simple task manager application. NodeJS backend project.",
+  "scripts": {
+    "build": "cd ng2 && npm run build:production:aot",
+    "start": "nodemon application.js"
+  },
+  "author": "Daniel Amores (damoresac@gmail.com)",
+  "devDependencies": {
+    "nodemon": "1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "1.18.1",
+    "express": "4.15.4",
+    "mongoose": "4.11.11",
+    "passport-jwt": "^3.0.1",
+    "winston": "2.4.0"
+  }
+}
