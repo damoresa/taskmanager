@@ -12,6 +12,17 @@ The purpose of the application is to actually help myself manage
 my own time in order to be able to analyze certain scenarios.
   
   
+### Project structure
+
+The project contains the following folders:
+* __Constants__: as it may be obvious, contains contants such as the 
+database connection string.
+* __Controllers__: _Express_ controllers.
+* __Models__: _Mongoose_ models.
+* __NG2__: Contains the _Angular_ application sources and _Webpack_ 
+configuration files. The application will be compiled into the _public_ 
+folder from which _Express_ will publish it as static content.
+  
 ### Frontend
 
 The frontend is built using _Angular_ and _Webpack_. It features _AOT_ 
