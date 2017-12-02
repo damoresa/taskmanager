@@ -43,7 +43,6 @@ export class ProjectsComponent implements OnInit {
     }
 
     createProject(project) {
-        console.log(JSON.stringify(project));
         this.projectsService.createProject(project).subscribe(
             (result) => {
                 this.closeModal('createProjectModal');

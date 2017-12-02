@@ -64,11 +64,9 @@ export class TaskDetailComponent implements OnDestroy, OnInit {
 	}
 
 	closeTask() {
-		console.log('Closing task ' + this.task.code);
 		this.tasksService.closeTask(this.task.code).subscribe(
 			(response) => {
 				// TODO: Success toast
-				console.log(` Task ${this.task.code} closed `);
                 this.loadTask();
 			},
 			(error) => {

@@ -94,7 +94,6 @@ export class TasksComponent implements OnInit {
 
 	createTask(task) {
 		task.duration = stringToMinutes(task.duration);
-		console.log(JSON.stringify(task));
 		this.tasksService.createTask(task).subscribe(
 			(result) => {
                 this.closeModal('createTaskModal');
