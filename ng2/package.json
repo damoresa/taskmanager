@@ -31,7 +31,7 @@
     "start": "webpack-dev-server --inline --port 3000 --watch --content-base src/",
     "electron": "electron dist",
     "****** POSTINSTALL ******": "",
-    "postinstall": "npm run build:production:aot",
+    "postinstall": "npm run build:production:aot"
   },
   "author": "Daniel Amores <damoresac@gmail.com>",
   "repository": {
