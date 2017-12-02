@@ -14,6 +14,7 @@ import { AuthService } from './../../common/auth/auth.service';
 export class HeaderComponent implements OnDestroy, OnInit {
     
     authenticated: boolean = false;
+    username: string;
 
     @ViewChild(AuthComponent) private authComponent: AuthComponent;
     private authSubscription;
@@ -25,7 +26,10 @@ export class HeaderComponent implements OnDestroy, OnInit {
             (authEvent: AuthEvent) => {
                 // Whenever we receive a correct authentication it means the login modal was up.
                 if (authEvent.authed) {
+                    this.username = authEvent.username;
                     this.authComponent.hideLogin();
+                } else {
+                    this.username = '';
                 }
 
                 this.authenticated = authEvent.authed;

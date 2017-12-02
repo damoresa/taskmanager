@@ -20,7 +20,7 @@
             <button class="btn btn-outline-success mr-1" type="button" *ngIf="!authenticated" (click)="login()">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign in
             </button>
-            <p class="m-0 p-1" style="color: white" *ngIf="authenticated">Signed in as <b>damoresa</b></p>
+            <p class="m-0 p-1 signed-user" *ngIf="authenticated">Signed in as <b>{{ username }}</b></p>
             <button class="btn btn-outline-danger ml-2 mr-1" type="button" *ngIf="authenticated" (click)="logout()">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Sign out
             </button>
