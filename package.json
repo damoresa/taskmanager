@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
-    "build": "cd ng2 && npm install && npm run build:production:aot",
+    "postinstall": "cd ng2 && npm install && npm run build:production:aot",
     "devStart": "nodemon application.js",
     "start": "node application.js"
   },
