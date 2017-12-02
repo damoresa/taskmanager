@@ -1,21 +1,32 @@
 {
   "name": "taskmanager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
     "build": "cd ng2 && npm run build:production:aot",
     "devStart": "nodemon application.js",
     "start": "node application.js"
   },
-  "author": "Daniel Amores (damoresac@gmail.com)",
+  "author": "Daniel Amores <damoresac@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damoresa/taskmanager.git"
+  },
   "devDependencies": {
     "nodemon": "1.12.1"
   },
   "dependencies": {
+    "bcrypt": "1.0.3",
     "body-parser": "1.18.1",
     "express": "4.15.4",
+    "jwt-simple": "0.5.1",
     "mongoose": "4.11.11",
-    "passport-jwt": "^3.0.1",
+    "passport": "0.4.0",
+    "passport-jwt": "3.0.1",
     "winston": "2.4.0"
+  },
+  "engines": {
+    "node": "8.9.0",
+    "npm": "5.5.1"
   }
 }

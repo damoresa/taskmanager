@@ -25,6 +25,13 @@ export class Th2ModalComponent {
     constructor() {}
 
     /**
+     * Method that shows the modal window programatically.
+     */
+    show() {
+        $('#' + this.modalId).modal('show');
+    }
+
+    /**
      * Method that closes the modal window programatically.
      */
     dismiss() {

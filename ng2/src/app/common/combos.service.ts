@@ -1,16 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Inject, Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+
+import { BaseuriInjectionToken } from './../common/baseuri.injection.token';
+import { HttpWrapper } from './../common/http.wrapper';
 
 @Injectable()
 export class CombosService {
 
-    private baseUrl: string = 'http://localhost:3300/';
-    private baseEndpoint: string = 'api/combos';
+    private BASE_URL: string;
+    private BASE_ENDPOINT: string = 'api/combos';
 
-    constructor(private http: Http) {}
+    constructor(@Inject(BaseuriInjectionToken) baseURI: string, private http: HttpWrapper) {
+        this.BASE_URL = baseURI;
+    }
 
-    getProjects() {
-        return this.http.get(this.baseUrl + this.baseEndpoint + '/projects')
+    getProjects(): Observable<any> {
+        return this.http.get(this.BASE_URL + this.BASE_ENDPOINT + '/projects')
             .map((response) => response ? response.json() : {});
     }
 }

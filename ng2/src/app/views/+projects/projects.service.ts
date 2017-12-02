@@ -1,18 +1,23 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Inject, Injectable } from '@angular/core';
+import { Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs';
+
+import { BaseuriInjectionToken } from './../../common/baseuri.injection.token';
+import { HttpWrapper } from './../../common/http.wrapper';
 
 @Injectable()
 export class ProjectsService {
 
-    private baseUrl: string = 'http://localhost:3300/';
-    private baseEndpoint: string = 'api/projects';
+    private BASE_URL: string;
+    private BASE_ENDPOINT: string = 'api/projects';
 
-    constructor(private http: Http) {}
+    constructor(@Inject(BaseuriInjectionToken) baseURI: string, private http: HttpWrapper) {
+        this.BASE_URL = baseURI;
+    }
 
     getProjects() {
-        return this.http.get(this.baseUrl + this.baseEndpoint)
+        return this.http.get(this.BASE_URL + this.BASE_ENDPOINT)
             .map((response) => response ? response.json() : {});
     }
 
@@ -20,7 +25,10 @@ export class ProjectsService {
         const headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this.baseUrl + this.baseEndpoint, project, headers)
+        const requestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this.http.post(this.BASE_URL + this.BASE_ENDPOINT, project, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 

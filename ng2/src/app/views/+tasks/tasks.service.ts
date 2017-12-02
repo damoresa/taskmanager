@@ -1,29 +1,35 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Inject, Injectable } from '@angular/core';
+import { Headers, URLSearchParams, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs';
+
+import { BaseuriInjectionToken } from './../../common/baseuri.injection.token';
+import { HttpWrapper } from './../../common/http.wrapper';
 
 @Injectable()
 export class TasksService {
 
-    private baseUrl: string = 'http://localhost:3300/';
-    private baseEndpoint: string = 'api/tasks';
+    private BASE_URL: string;
+    private BASE_ENDPOINT: string = 'api/tasks';
 
-    constructor(private http: Http) {}
+    constructor(@Inject(BaseuriInjectionToken) baseURI: string, private http: HttpWrapper) {
+        this.BASE_URL = baseURI;
+    }
 
     getTasks(taskCode: string, projectCode: string) {
         const searchParams: URLSearchParams = new URLSearchParams();
         searchParams.set('taskCode', taskCode);
         searchParams.set('projectCode', projectCode);
 
-        return this.http.get(this.baseUrl + this.baseEndpoint, {
-                search: searchParams
-            })
+        const requestOptions = new RequestOptions();
+        requestOptions.params = searchParams;
+
+        return this.http.get(this.BASE_URL + this.BASE_ENDPOINT, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 
     getTask(taskId: string) {
-        return this.http.get(this.baseUrl + this.baseEndpoint + '/' + taskId)
+        return this.http.get(this.BASE_URL + this.BASE_ENDPOINT + '/' + taskId)
             .map((response) => response ? response.json() : {});
     }
 
@@ -31,7 +37,10 @@ export class TasksService {
         const headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this.baseUrl + this.baseEndpoint, task, headers)
+        const requestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this.http.post(this.BASE_URL + this.BASE_ENDPOINT, task, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 
@@ -39,7 +48,10 @@ export class TasksService {
         const headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this.baseUrl + this.baseEndpoint + '/' + taskCode + '/log', log, headers)
+        const requestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this.http.post(this.BASE_URL + this.BASE_ENDPOINT + '/' + taskCode + '/log', log, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 
@@ -47,7 +59,10 @@ export class TasksService {
         const headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this.baseUrl + this.baseEndpoint + '/' + taskCode + '/close', {}, headers)
+        const requestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this.http.post(this.BASE_URL + this.BASE_ENDPOINT + '/' + taskCode + '/close', {}, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 
@@ -55,7 +70,10 @@ export class TasksService {
         const headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(this.baseUrl + this.baseEndpoint + '/' + taskCode + '/link', linkedTask, headers)
+        const requestOptions = new RequestOptions();
+        requestOptions.headers = headers;
+
+        return this.http.post(this.BASE_URL + this.BASE_ENDPOINT + '/' + taskCode + '/link', linkedTask, requestOptions)
             .map((response) => response ? response.json() : {});
     }
 

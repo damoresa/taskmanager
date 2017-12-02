@@ -87,6 +87,11 @@ export class TasksComponent implements OnInit {
         );
 	}
 
+	resetFilter() {
+        this.filterForm.reset();
+        this.filter({});
+	}
+
 	createTask(task) {
 		task.duration = stringToMinutes(task.duration);
 		console.log(JSON.stringify(task));

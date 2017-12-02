@@ -1,0 +1,21 @@
+<th2-modal-component [modalId]="authModal">
+    <div class="th2-modal-header">
+        <h5 class="modal-title" id="AuthModalLabel">Sign in</h5>
+    </div>
+    <div class="th2-modal-body">
+        <form id="authForm" [formGroup]="authForm" (ngSubmit)="login(authForm.value)" novalidate>
+            <div class="form-group">
+                <label for="username" class="form-control-label">Username:</label>
+                <input id="username" formControlName="username" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-control-label">Password:</label>
+                <input id="password" type="password" formControlName="password" class="form-control"/>
+            </div>
+        </form>
+    </div>
+    <div class="th2-modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="authForm.reset()" data-dismiss="modal">Cancel</button>
+        <button form="authForm" [disabled]="!authForm.valid" class="btn btn-primary">Sign in</button>
+    </div>
+</th2-modal-component>

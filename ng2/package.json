@@ -1,6 +1,6 @@
 {
   "name": "taskmanger-frontend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple task manager application. Front-end Angular project.",
   "main": "main.js",
   "scripts": {
@@ -31,7 +31,11 @@
     "start": "webpack-dev-server --inline --port 3000 --watch --content-base src/",
     "electron": "electron dist"
   },
-  "author": "Daniel Amores (XE59105)",
+  "author": "Daniel Amores <damoresac@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damoresa/taskmanager.git"
+  },
   "dependencies": {
     "@angular/animations": "4.1.2",
     "@angular/common": "4.1.2",
@@ -126,8 +130,7 @@
     "webpack-merge": "4.1.0"
   },
   "engines": {
-    "node": ">= 4.2.1",
-    "npm": ">= 3"
-  },
-  "private": true
+    "node": "8.9.0",
+    "npm": "5.5.1"
+  }
 }

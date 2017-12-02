@@ -1,17 +1,22 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const path = require('path');
 const winston = require('winston');
 
+const jwtStrategy = require('./middleware/jwt-strategy');
+
 const configuration = require('./constants/configuration');
+const authController = require('./controllers/auth.controller');
 const combosController = require('./controllers/combos.controller');
 const projectsController = require('./controllers/projects.controller');
 const tasksController = require('./controllers/tasks.controller');
+const usersController = require('./controllers/users.controller');
 
 // Configure the logger appenders and level
-// TODO: Make this environment aware & be careful of the winston v3 changes
-winston.level = 'debug';
+// FIXME: Be careful of the winston v3 changes
+winston.level = process.env.LOGLEVEL || 'debug';
 
 // MongoDB connection
 mongoose.connect(configuration.database, {
@@ -24,21 +29,35 @@ const application = express();
 
 // FIXME: CORS FILTER FOR DEVELOPMENT PURPOSES ONLY
 application.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, Authorization');
+    // Allow all preflight OPTIONS requests in order to avoid issues since they don't have the Authorization header
+    if (req.method == 'OPTIONS') {
+        res.status(200).end();
+    } else {
+        next();
+    }
 });
 
-// Server configuration - server static resources and process JSON requests
+// Configure Passport to use our JWT strategy and attach it to the application
+application.use(passport.initialize());
+passport.use(jwtStrategy);
+
+// Server configuration
+// Serve static resources and parse requests body as JSON
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({
     extended: true
 }));
 application.use(express.static(path.join(__dirname, 'public')));
 
+// Use JWT passport for all the api/* endpoints to securize them all
+application.use('/auth', authController.router);
+application.all('/api/*', passport.authenticate('jwt', { session: false }));
 application.use('/api/combos', combosController.router);
 application.use('/api/projects', projectsController.router);
 application.use('/api/tasks', tasksController.router);
+application.use('/api/users', usersController.router);
 
 // Default fallback for unbound requests
 application.get('*', (request, response) => {

@@ -7,6 +7,10 @@ on a free or hobby dyno and is thought for individual use - as in one
 user per application instance as of 28/11/2017 - so most of it's 
 provided tooling is either used or recommended.
   
+As of 2/12/2017 the application supports a very simple _JWT_ authentication 
+pattern, with expiry yet to be implemented. Also, tasks / projects are still 
+global so the application is designed for a single user. In the future I may 
+consider adding a user to project relationship, but that's out of the scope now.
   
 The purpose of the application is to actually help myself manage 
 my own time in order to be able to analyze certain scenarios.
@@ -51,8 +55,10 @@ using the variable name _DATABASE_URI_.
 
 On the near/mid future, you can expect the following features:
 * Dockerfile to support Docker image deployments.
-* Single user authentication using _JWT_ and _OAuth_ together with 
-_passport_.
+* Better _JWT_ management - expiry and whatnot.
+* User roles to allow multi-user instances where "_project leaders_" can 
+assign other users to their projects in order to grant or revoke vision 
+of the tasks. Aditionally, this could also bring user assignment to tasks.
 
 ### Running the project
 

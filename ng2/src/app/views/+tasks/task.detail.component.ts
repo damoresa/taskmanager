@@ -22,7 +22,8 @@ export class TaskDetailComponent implements OnDestroy, OnInit {
 		description: '',
 		duration: 0,
 		progress: 0,
-		open: false
+		open: false,
+		linkedTasks: []
 	};
 
 	private taskId: string;
@@ -37,7 +38,7 @@ export class TaskDetailComponent implements OnDestroy, OnInit {
 	ngOnInit() {
 		// Retrieve taskId from path
 		this.subscription = this.route.params.subscribe((params) => {
-			this.taskId = params.taskId;
+			this.taskId = params['taskId'];
             this.loadTask();
 		});
 	}
