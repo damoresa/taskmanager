@@ -29,7 +29,9 @@
     "build:production:aot": "npm run clean && cross-env NODE_ENV=production-aot webpack --progress --bail --profile",
     "****** RUNNING ******": "",
     "start": "webpack-dev-server --inline --port 3000 --watch --content-base src/",
-    "electron": "electron dist"
+    "electron": "electron dist",
+    "****** POSTINSTALL ******": "",
+    "postinstall": "npm run build:production:aot",
   },
   "author": "Daniel Amores <damoresac@gmail.com>",
   "repository": {
