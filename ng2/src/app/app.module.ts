@@ -27,7 +27,7 @@ import { HomeModule } from './views/home/home.module';
     providers: [
         {
             provide: BaseuriInjectionToken,
-            useValue: 'http://localhost:3300/'
+            useValue: process.env.BASE_URL || 'http://localhost:3300/'
         },
         CombosService,
         HttpWrapper,
