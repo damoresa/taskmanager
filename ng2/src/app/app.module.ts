@@ -27,7 +27,7 @@ import { HomeModule } from './views/home/home.module';
     providers: [
         {
             provide: BaseuriInjectionToken,
-            useValue: 'https://ng-taskmanager.herokuapp.com/' || 'http://localhost:3300/'
+            useValue: '/' || 'http://localhost:3300/'
         },
         CombosService,
         HttpWrapper,
