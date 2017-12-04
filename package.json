@@ -3,7 +3,11 @@
   "version": "1.0.1",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
-    "postinstall": "cd ng2 && npm install",
+    "postinstall": "npm test && cd ng2 && npm install",
+    "clean:test": "rimraf coverage",
+    "test:coverage": "nyc --reporter=html --reporter=text mocha \"./test/**/*.spec.js\"",
+    "test:unit": "mocha \"./test/**/*.spec.js\"",
+    "test": "npm run clean:test && npm run test:coverage",
     "devStart": "nodemon application.js",
     "start": "node application.js"
   },
@@ -13,7 +17,15 @@
     "url": "https://github.com/damoresa/taskmanager.git"
   },
   "devDependencies": {
-    "nodemon": "1.12.1"
+    "chai": "4.1.2",
+    "istanbul": "0.4.5",
+    "mocha": "4.0.1",
+    "nodemon": "1.12.1",
+    "nyc": "11.3.0",
+    "rimraf": "2.6.2",
+    "sinon": "4.1.2",
+    "sinon-chai": "2.14.0",
+    "sinon-express-mock": "1.3.1"
   },
   "dependencies": {
     "bcrypt": "1.0.3",

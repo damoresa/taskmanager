@@ -27,12 +27,12 @@ class CombosController {
 
     getProjects(request, response) {
 
-        winston.debug(' Finding projects ');
+        winston.debug('Finding projects');
 
         Project.find((error, result) => {
             if (error) {
                 const errorBody = {
-                    code: 'TM-PROJECT-001',
+                    code: 'TM-COMBO-001',
                     message: error
                 };
 

@@ -23,11 +23,12 @@ class AuthController {
     }
 
     login(request, response) {
-
+		
+		const loginErrorMessage = 'Invalid user or password.';
         const username = request.body.username;
         const password = request.body.password;
 
-        winston.debug(` Logging in as ${username} `);
+        winston.debug(`Logging in as ${username}`);
 
         User.findOne({ username: username }, (error, user) => {
             if (error) {
@@ -39,16 +40,16 @@ class AuthController {
                 winston.error(JSON.stringify(errorBody));
                 response.status(401).json(errorBody);
             } else if (!user) {
-                winston.error('Invalid user or password.');
-                response.status(401).json({ error: 'Invalid user or password.' });
+                winston.error(loginErrorMessage);
+                response.status(401).json({ error: loginErrorMessage });
             } else {
-                user.comparePassword(password, function(err, matches) {
-                    if (matches && !err) {
+                user.comparePassword(password, (err, matches) => {
+                    if (!err && matches) {
                         const token = jwt.encode(user, configuration.hashSecret);
                         response.json({ token: token });
                     } else {
-                        winston.error('Invalid user or password.');
-                        response.status(401).json({ error: 'Invalid user or password.' });
+                        winston.error(loginErrorMessage);
+                        response.status(401).json({ error: loginErrorMessage });
                     }
                 });
             }

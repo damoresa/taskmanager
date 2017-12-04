@@ -29,7 +29,7 @@ class ProjectsController {
 
     getProjects(request, response) {
 
-        winston.debug(' Finding projects ');
+        winston.debug('Finding projects');
 
         Project.find((error, result) => {
             if (error) {
@@ -53,7 +53,7 @@ class ProjectsController {
         const name = request.body.name;
         const description = request.body.description;
 
-        winston.debug(` Creating project ${name} `);
+        winston.debug(`Creating project ${name}`);
 
         const projectModel = {
             code: code,

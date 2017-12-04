@@ -28,9 +28,9 @@ class UsersController {
 
     getUsers(request, response) {
 
-        winston.debug(' Finding users ');
+        winston.debug('Finding users');
 
-        Users.find((error, result) => {
+        User.find((error, result) => {
             if (error) {
                 const errorBody = {
                     code: 'TM-USERS-001',
@@ -52,7 +52,7 @@ class UsersController {
         const password = request.body.password;
         const email = request.body.email;
 
-        winston.debug(` Creating user ${username} `);
+        winston.debug(`Creating user ${username}`);
 
         const userModel = {
             username: username,

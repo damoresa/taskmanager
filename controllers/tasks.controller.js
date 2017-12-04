@@ -7,7 +7,7 @@ const Task = require('./../models/task.model');
 const mapLogs = (mongoLogModel) => {
     return {
         date: mongoLogModel.date,
-        log: mongoLogModel.log,
+        log: mongoLogModel.description,
         duration: mongoLogModel.duration
     }
 };
@@ -50,8 +50,8 @@ class TasksController {
 	    const taskCode = request.query.taskCode || '';
         const projectCode = request.query.projectCode || '';
 
-	    winston.debug(' Finding tasks ');
-	    winston.debug(` Filters - taskCode: ${taskCode} & projectCode: ${projectCode} `);
+	    winston.debug('Finding tasks');
+	    winston.debug(`Filters - taskCode: ${taskCode} & projectCode: ${projectCode}`);
 
 		Task.find({
                 code: new RegExp(`.*${taskCode}.*`, 'i'),
@@ -75,7 +75,7 @@ class TasksController {
 		
 		const taskCode = request.params.taskCode;
 
-		winston.debug(` Finding task with code ${taskCode} `);
+		winston.debug(`Finding task with code ${taskCode}`);
 
 		const responseBody = {
 		    error: undefined,
@@ -109,7 +109,7 @@ class TasksController {
 		// FIXME: Possible error if code hits a number > 5 digits?
 		const basePattern = '00000';
 
-        winston.debug(` Creating task ${name} `);
+        winston.debug(`Creating task ${name}`);
 
 		const taskModel = {
 			code: basePattern,
@@ -166,7 +166,7 @@ class TasksController {
             duration: loggedTime
         };
 
-        winston.debug(` Logging ${loggedTime} for task ${taskCode} at ${logDate} `);
+        winston.debug(`Logging ${loggedTime} for task ${taskCode} at ${logDate}`);
 		
 		Task.findOne({ code: taskCode }, (error, result) => {
 			if (error) {
@@ -206,7 +206,7 @@ class TasksController {
 
         const taskCode = request.params.taskCode;
 
-        winston.debug(` Closing task ${taskCode} `);
+        winston.debug(`Closing task ${taskCode}`);
 
         Task.findOne({ code: taskCode }, (error, result) => {
             if (error) {
@@ -246,7 +246,7 @@ class TasksController {
         const taskCode = request.params.taskCode;
         const linkedTaskCode = request.body.code;
 
-        winston.debug(` Linking tasks: ${taskCode} ${linkedTaskCode} `);
+        winston.debug(`Linking tasks: ${taskCode} ${linkedTaskCode}`);
 
         Task.findOne({ code: taskCode }, (error, result) => {
             if (error) {

@@ -9,6 +9,8 @@ ng2/tsconfig-test.json
 ng2-base
 
 # NodeJS
+.nyc_output
+coverage
 node_modules
 public
 *.log*
