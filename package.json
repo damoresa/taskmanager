@@ -3,13 +3,17 @@
   "version": "1.0.1",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
-    "postinstall": "npm test && cd ng2 && npm install",
     "clean:test": "rimraf coverage",
+    "clean:front_modules": "rimraf ng2/node_modules",
     "test:coverage": "nyc --reporter=html --reporter=text mocha \"./test/**/*.spec.js\"",
+	"test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:lcov": "nyc --reporter=lcov mocha \"./test/**/*.spec.js\"",
     "test:unit": "mocha \"./test/**/*.spec.js\"",
-    "test": "npm run clean:test && npm run test:coverage",
+	"test:report": "npm run clean:test && npm run test:coverage",
+    "test": "npm run clean:test && npm run test:lcov && npm run test:coveralls",
     "devStart": "nodemon application.js",
-    "start": "node application.js"
+    "start": "node application.js",
+    "postinstall": "npm test && cd ng2 && npm install && cd .. && npm run clean:front_modules"
   },
   "author": "Daniel Amores <damoresac@gmail.com>",
   "repository": {
@@ -18,6 +22,7 @@
   },
   "devDependencies": {
     "chai": "4.1.2",
+    "coveralls": "3.0.0",
     "istanbul": "0.4.5",
     "mocha": "4.0.1",
     "nodemon": "1.12.1",

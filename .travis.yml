@@ -4,3 +4,8 @@ node_js:
 cache:
   directories:
     - "node_modules"
+deploy:
+  provider: heroku
+  api-key: 
+    secure: $HEROKU_API_KEY
+  app: ng-taskmanager-staging
