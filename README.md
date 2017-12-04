@@ -1,8 +1,11 @@
 ## Task manager
 
+[![Build Status](https://travis-ci.org/damoresa/taskmanager.svg?branch=master)](https://travis-ci.org/damoresa/taskmanager)
+[![Coverage Status](https://coveralls.io/repos/github/damoresa/taskmanager/badge.svg)](https://coveralls.io/github/damoresa/taskmanager)
+
 Task management application that features an _Angular_ frontend and 
 a _NodeJS_ backend with a _MongoDB_ database.  
-The application is designed to be deployed on [Heroku](www.heroku.com) 
+The application is designed to be deployed on [Heroku](https://www.heroku.com) 
 on a free or hobby dyno and is thought for individual use - as in one 
 user per application instance as of 28/11/2017 - so most of it's 
 provided tooling is either used or recommended.

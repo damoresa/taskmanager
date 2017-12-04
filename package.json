@@ -1,6 +1,6 @@
 {
   "name": "taskmanager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
     "clean:test": "rimraf coverage",
@@ -10,10 +10,11 @@
     "test:lcov": "nyc --reporter=lcov mocha \"./test/**/*.spec.js\"",
     "test:unit": "mocha \"./test/**/*.spec.js\"",
 	"test:report": "npm run clean:test && npm run test:coverage",
-    "test": "npm run clean:test && npm run test:lcov && npm run test:coveralls",
+    "test:ci": "npm run clean:test && npm run test:lcov && npm run test:coveralls",
+	"test": "npm run clean:test && npm run test:coverage",
     "devStart": "nodemon application.js",
     "start": "node application.js",
-    "postinstall": "npm test && cd ng2 && npm install && cd .. && npm run clean:front_modules"
+    "postinstall": "cd ng2 && npm install && cd .. && npm run clean:front_modules"
   },
   "author": "Daniel Amores <damoresac@gmail.com>",
   "repository": {

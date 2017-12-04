@@ -4,6 +4,8 @@ node_js:
 cache:
   directories:
     - "node_modules"
+install: true
+script: npm install && npm run test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api-key: 
