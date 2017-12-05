@@ -1,8 +1,0 @@
-node_modules/
-.idea/
-.npmrc
-dist/
-coverage/
-*.log
-*.log.*
-*.iml

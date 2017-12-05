@@ -1,20 +1,22 @@
 {
   "name": "taskmanager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
+    "****** CLEAN ******": "",
     "clean:test": "rimraf coverage",
     "clean:front_modules": "rimraf ng2/node_modules",
+    "****** TEST ******": "",
     "test:coverage": "nyc --reporter=html --reporter=text mocha \"./test/**/*.spec.js\"",
-	"test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:lcov": "nyc --reporter=lcov mocha \"./test/**/*.spec.js\"",
     "test:unit": "mocha \"./test/**/*.spec.js\"",
-	"test:report": "npm run clean:test && npm run test:coverage",
+    "test:report": "npm run clean:test && npm run test:coverage",
     "test:ci": "npm run clean:test && npm run test:lcov && npm run test:coveralls",
-	"test": "npm run clean:test && npm run test:coverage",
+    "test": "npm run clean:test && npm run test:coverage",
+    "****** RUNNING ******": "",
     "devStart": "nodemon application.js",
-    "start": "node application.js",
-    "postinstall": "cd ng2 && npm install && cd .. && npm run clean:front_modules"
+    "start": "node application.js"
   },
   "author": "Daniel Amores <damoresac@gmail.com>",
   "repository": {
