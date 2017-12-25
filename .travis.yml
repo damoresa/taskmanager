@@ -9,9 +9,7 @@ addons:
     organization: "damoresa-github"
     token:
       secure: $SONAR_TOKEN
-script:
-  - sonar-scanner
-  - npm run test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+script: npm run test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && sonar-scanner
 deploy:
   provider: heroku
   api-key: 
