@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/damoresa/taskmanager.svg?branch=master)](https://travis-ci.org/damoresa/taskmanager)
 [![Coverage Status](https://coveralls.io/repos/github/damoresa/taskmanager/badge.svg)](https://coveralls.io/github/damoresa/taskmanager)
+[![SonarCloud Status](https://sonarcloud.io/api/badges/gate?key=taskmanager)](https://sonarcloud.io/dashboard?id=taskmanager)
 
 Task management application that features an 
 [_Angular_ frontend](https://github.com/damoresa/taskmanager-frontend) 
@@ -19,6 +20,8 @@ consider adding a user to project relationship, but that's out of the scope now.
   
 As of 5/12/2017 the application goes through _TravisCI_ and _Coveralls_ 
 and is automatically deployed to an _Heroku_ staging environment.
+
+As of 25/12/2017 _SonarCloud_ support has been implemented.
   
 The purpose of the application is to actually help myself manage 
 my own time in order to be able to analyze certain scenarios.
