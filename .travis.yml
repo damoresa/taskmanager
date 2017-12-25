@@ -4,6 +4,11 @@ node_js:
 cache:
   directories:
     - "node_modules"
+addons:
+  sonarcloud:
+    organization: "damoresa-github"
+    token:
+      secure: $SONAR_TOKEN
 script: npm run test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku

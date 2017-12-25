@@ -1,6 +1,6 @@
 {
   "name": "taskmanager",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
     "****** CLEAN ******": "",
