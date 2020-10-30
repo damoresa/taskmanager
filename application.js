@@ -2,7 +2,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const path = require('path');
 const winston = require('winston');
 
 const jwtStrategy = require('./middleware/jwt-strategy');
@@ -19,9 +18,7 @@ const usersController = require('./controllers/users.controller');
 winston.level = process.env.LOGLEVEL || 'debug';
 
 // MongoDB connection
-mongoose.connect(configuration.database, {
-    useMongoClient: true
-});
+mongoose.connect(configuration.database, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // ExpressJS service
 const applicationPort = process.env.PORT || 3300;
@@ -32,7 +29,7 @@ application.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, Authorization');
     // Allow all preflight OPTIONS requests in order to avoid issues since they don't have the Authorization header
-    if (req.method == 'OPTIONS') {
+    if (req.method === 'OPTIONS') {
         res.status(200).end();
     } else {
         next();
@@ -49,7 +46,6 @@ application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({
     extended: true
 }));
-application.use(express.static(path.join(__dirname, 'public')));
 
 // Use JWT passport for all the api/* endpoints to securize them all
 application.use('/auth', authController.router);
@@ -61,8 +57,7 @@ application.use('/api/users', usersController.router);
 
 // Default fallback for unbound requests
 application.get('*', (request, response) => {
-	const indexPath = path.join(__dirname, 'public', 'index.html');
-    response.sendFile(indexPath);
+	response.sendStatus(404);
 });
 
 application.listen(applicationPort, () => {

@@ -1,6 +1,6 @@
 {
   "name": "taskmanager",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple task manager application. NodeJS backend project.",
   "scripts": {
     "****** CLEAN ******": "",
@@ -40,7 +40,7 @@
     "body-parser": "1.18.1",
     "express": "4.15.4",
     "jwt-simple": "0.5.1",
-    "mongoose": "4.11.11",
+    "mongoose": "5.10.11",
     "passport": "0.4.0",
     "passport-jwt": "3.0.1",
     "winston": "2.4.0"

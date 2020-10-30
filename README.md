@@ -22,6 +22,12 @@ As of 5/12/2017 the application goes through _TravisCI_ and _Coveralls_
 and is automatically deployed to an _Heroku_ staging environment.
 
 As of 25/12/2017 _SonarCloud_ support has been implemented.
+
+As of 30/10/2020, the _mLab_ MongoDB database has been migrated to _Atlas_.  
+_Mongoose_ version has been bumped and the project could use several improvements 
+such as better _CORS_ configuration or a reimplementation of the existing _callbacks_ 
+into _async/await_ constructs which leverage _Promises_. However, since this is 
+sort of a "_pet project_", I probably won't be investing my time into these refactors.
   
 The purpose of the application is to actually help myself manage 
 my own time in order to be able to analyze certain scenarios.
