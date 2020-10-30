@@ -12,6 +12,11 @@ addons:
 script: npm run test:ci && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && sonar-scanner
 deploy:
   provider: heroku
-  api-key: 
+  api_key:
     secure: $HEROKU_API_KEY
   app: ng-taskmanager-staging
+  on:
+    repo: damoresa/taskmanager
+branches:
+  only:
+    - master

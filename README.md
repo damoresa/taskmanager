@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/damoresa/taskmanager.svg?branch=master)](https://travis-ci.org/damoresa/taskmanager)
 [![Coverage Status](https://coveralls.io/repos/github/damoresa/taskmanager/badge.svg)](https://coveralls.io/github/damoresa/taskmanager)
-[![SonarCloud Status](https://sonarcloud.io/api/badges/gate?key=taskmanager)](https://sonarcloud.io/dashboard?id=taskmanager)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=taskmanager&metric=alert_status)](https://sonarcloud.io/dashboard?id=taskmanager)
 
 Task management application that features an 
 [_Angular_ frontend](https://github.com/damoresa/taskmanager-frontend) 
