@@ -1,26 +1,26 @@
 language: node_js
 node_js:
-  - "8.9.1"
+- 8.9.1
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 addons:
   sonarcloud:
-    organization: "damoresa-github"
+    organization: damoresa-github
     token:
-      secure: $SONAR_TOKEN
+      secure: T9HT99tp2edPgftjKCif+xldCwo75iu9W06R5AxrbXYMUJxcvI0QrBmQCRH1OxOCWCm+R8BCmAFqmxhUpmcELfzdWS5nW1DxvRTC0hm5v5G00Io5/ftWfny7pUOy5/kumebz25KGeIDb9xVmkftK9seSUEaSvwOkTb5e2tXfHiAUyGNz/RRGPwVlv46KJ8HgFkR8D3kggEH1vtAiGLo4oTr5iyORTvR/PnM9sPHk1TGU/Bc/SUow/AQtPNR0JT3tA3nnaqwwgfrE9W6n3enYT5i2756Y/37COZu/Z7cRfipxYRpETZencLfhLv5oFI6Vdl0+yAnl4AkUDdnvpAbjCuPulgSVmOvDobbPd5ZpbGEq1CyAg/pFPeWTj7NkZVsdRu7HpZ5QHg98gvMo8kEDPPbEbldYhxYTHaDDYgBknxEphb+jYHphhNWasMy3hOtJvW8EYUXVxJN3ctIiWfp9lan8P8lJWgBI9oEVYxD3vJ0QpKIDBRi+BIlU1Dhd11vw7En2iB0B93PVqKDFX0l38eOKt1M5yN9Gjh++plvZw5R6C9Nc4werDYqk3lIClKAdcdMoN3QUKIO5cx2JZuMPGnjcXgVicrFd3WibfPZgQIsJ8PqWicdEiv/8bkzO4qIWV/TFzrYpoCsS12Rk2pzYwv0TVlkKYizKEPJkeusIQco=
 script:
-  - npm run test:ci
-  - sonar-scanner
+- npm run test:ci
+- sonar-scanner
 after_success:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api_key:
-    secure: $HEROKU_API_KEY
+    secure: BvwBfOI2d2ilwDP3Usw6TPKloEsD42Y3D+bu+nlTel+4gfhyqy20vdUm6tP++ANzwZNPS1QukbRAR3fMESozO6/LegwyQv6ykU4WtylF3cnS7Ml+lF9C7VO7PfIE9fo4EuXhovFq95kAC8BjDq3KQiSk7+3/ioYOcC1SF7polB4G7t/+XfLdGLoTOnLb3oLWaxRl9Xue4qRwrJv8o3f5Jxx/ZlqF2R6wOZr2DsUrxEi5iZVLWa5LRVI69K5NsgCzNeVn1Obuxbph2+zdJY486QvlmiDj6NVQxIh+9wG+8vuIWD+9shMXy5zvLdebFnVljYVbBWfsyhxaCHaMjGnN/RfSlLuRsun77Tq71uBXmRe70vN30cUEZPZg9NE2aHq3SfvD3M1+DdN1ZZAS6XEW3KTyOqo10YyaCG7piEFmDKp8eQacHsodFqZbIofEbqZS6VpEnirPs+Gsxy4Y0+k1XmH5SmJ8t3glM1c/rJCNxdViuM/7DaLGOsYvQnNMSMPTj3f548bI4Mn1yvOeQiH62nWF7HAztvLXXGo0o+Hw7NUx7HXKYpwYQsJaVQn3euQmWeVMAP4/cPIBla/6cIuKz9xd8buoFqXsIzbmgWLW+tcwn8CotRlrTkxwnmGcrWh3z5PhBJEI7i1dj2l5p3aiRlcX7WkZpTse/Vqd1WYdc0Y=
   app: ng-taskmanager-staging
   on:
     repo: damoresa/taskmanager
 branches:
   only:
-    - master
+  - master
