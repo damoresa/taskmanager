@@ -39,7 +39,7 @@
     "bcrypt": "3.0.4-napi",
     "body-parser": "1.18.1",
     "express": "4.15.4",
-    "jwt-simple": "0.5.1",
+    "jwt-simple": "0.5.3",
     "mongoose": "5.10.11",
     "passport": "0.4.0",
     "passport-jwt": "3.0.1",
