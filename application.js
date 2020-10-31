@@ -23,10 +23,14 @@ mongoose.connect(configuration.database, { useNewUrlParser: true, useUnifiedTopo
 // ExpressJS service
 const applicationPort = process.env.PORT || 3300;
 const application = express();
+application.disable('x-powered-by');
 
-// FIXME: CORS FILTER FOR DEVELOPMENT PURPOSES ONLY
 application.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    const allowedOrigins = ['https://ng-taskmanager.surge.sh'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.header('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, Authorization');
     // Allow all preflight OPTIONS requests in order to avoid issues since they don't have the Authorization header
     if (req.method === 'OPTIONS') {
