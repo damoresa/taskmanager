@@ -12,8 +12,6 @@ addons:
 script:
 - npm run test:ci
 - sonar-scanner
-after_success:
-- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api_key:
