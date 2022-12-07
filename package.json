@@ -38,7 +38,7 @@
   "dependencies": {
     "bcrypt": "3.0.4-napi",
     "body-parser": "1.18.1",
-    "express": "4.15.4",
+    "express": "4.17.3",
     "jwt-simple": "0.5.1",
     "mongoose": "5.10.11",
     "passport": "0.4.0",
